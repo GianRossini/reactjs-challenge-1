@@ -1,8 +1,8 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import '../styles/tasklist.scss'
+import '../styles/tasklist.scss';
 
-import { FiTrash, FiCheckSquare } from 'react-icons/fi'
+import { FiTrash, FiCheckSquare } from 'react-icons/fi';
 
 interface Task {
   id: number;
@@ -15,15 +15,33 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    // Create a new task with id random, it doesn't allow creating if the title is empty.
+    const taskTitle = newTaskTitle.trim();
+
+    if (taskTitle) {
+      const task: Task = {
+        id: Date.now(),
+        title: taskTitle,
+        isComplete: false
+      }
+  
+      setTasks((old) => [...old, task]);
+  
+    } else {
+      alert('ToDo title cannot be empty');
+    }
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    // Change between `true` or `false` the `isComplete` field of a task with a given ID
+    setTasks(old => old.map((task) => task.id === id ? { ...task, isComplete: !task.isComplete } : task ))
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    // Remove a task from listing by ID
+    const newTasks = tasks.filter(task => task.id !== id);
+
+    setTasks(newTasks);
   }
 
   return (
