@@ -27,8 +27,6 @@ export function TaskList() {
   
       setTasks((old) => [...old, task]);
   
-    } else {
-      alert('ToDo title cannot be empty');
     }
   }
 
