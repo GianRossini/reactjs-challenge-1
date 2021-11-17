@@ -137,7 +137,7 @@ module.exports = {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    "<rootDir>/jest/setupTests.ts"
+    "<rootDir>/config/jest/setupTests.ts"
   ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
@@ -182,8 +182,8 @@ module.exports = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/jest/transforms/babelTransform.ts",
-    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/jest/transforms/fileTransform.ts"
+    "^.+\\.(js|jsx|mjs|cjs|ts|tsx)$": "<rootDir>/config/jest/transforms/babelTransform.ts",
+    "^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)": "<rootDir>/config/jest/transforms/fileTransform.ts"
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
